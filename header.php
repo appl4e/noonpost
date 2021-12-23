@@ -26,35 +26,108 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'noonpost' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$noonpost_description = get_bloginfo( 'description', 'display' );
-			if ( $noonpost_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $noonpost_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<!--loading -->
+	<div class="loading">
+			<div class="circle"></div>
+	</div>
+	<!--/-->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'noonpost' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg fixed-top">
+		<div class="container-fluid">
+				<!--logo-->
+				<div class="logo">
+					<?php 
+					if(has_custom_logo()):
+						?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<?php	the_custom_logo();?>
+						</a>
+					<?php
+					else:
+						if ( is_front_page() && is_home() ) :
+							?>
+							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							<?php
+						else :
+							?>
+							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							<?php
+						endif;
+					endif;
+					?>
+				</div>
+				<!--/-->
+
+				<!--navbar-collapse-->
+				<div class="collapse navbar-collapse" id="main_nav">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+							'menu_class'		 =>	'navbar-nav ml-auto mr-auto'
+						)
+					);
+					?>
+					<!-- <ul class="navbar-nav ml-auto mr-auto">
+							<li class="nav-item">
+									<a class="nav-link active" href="index.html"> Home </a>
+							</li>
+
+							<li class="nav-item">
+									<a class="nav-link" href="about.html"> About </a>
+							</li>
+							<li class="nav-item">
+									<a class="nav-link" href="contact.html"> Contact </a>
+							</li>
+					</ul> -->
+				</div>
+				<!--/-->
+
+				<!--navbar-right-->
+				<div class="navbar-right ml-auto">
+						<div class="theme-switch-wrapper">
+								<label class="theme-switch" for="checkbox">
+										<input type="checkbox" id="checkbox" />
+										<div class="slider round"></div>
+								</label>
+						</div>
+						<div class="social-icones">
+								<ul class="list-inline">
+										<li>
+												<a href="#">
+														<i class="fab fa-facebook-f"></i>
+												</a>
+										</li>
+										<li>
+												<a href="#">
+														<i class="fab fa-instagram"></i>
+												</a>
+										</li>
+										<li>
+												<a href="#">
+														<i class="fab fa-twitter"></i>
+												</a>
+										</li>
+										<li>
+												<a href="#">
+														<i class="fab fa-youtube"></i>
+												</a>
+										</li>
+								</ul>
+						</div>
+
+						<div class="search-icon">
+								<i class="icon_search"></i>
+						</div>
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+						</button>
+				</div>
+		</div>
+	</nav>
+	<!--/-->
+
+
