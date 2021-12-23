@@ -51,7 +51,7 @@
 							<?php
 						else :
 							?>
-							<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+							<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 							<?php
 						endif;
 					endif;
@@ -66,7 +66,8 @@
 						array(
 							'theme_location' => 'menu-1',
 							'menu_id'        => 'primary-menu',
-							'menu_class'		 =>	'navbar-nav ml-auto mr-auto'
+							'menu_class'		 =>	'navbar-nav ml-auto mr-auto',
+							'container'			 => ''
 						)
 					);
 					?>
