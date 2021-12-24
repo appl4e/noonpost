@@ -11,24 +11,28 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'noonpost' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'noonpost' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'noonpost' ), 'noonpost', '<a href="https://applemahmood.com">Apple Mahmood</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+	<?php get_template_part('template-parts/newsletter');?>
+	<!--footer-->
+	<footer class="footer">
+			<div class="container-fluid">
+					<div class="row">
+							<div class="col-lg-12">
+									<?php dynamic_sidebar('copyright');?>
+									<div class="back">
+											<a href="#" class="back-top">
+													<i class="arrow_up"></i>
+											</a>
+									</div>
+							</div>
+					</div>
+			</div>
+	</footer>
+
+	<?php get_template_part('template-parts/search-popup');?>
+
 </div><!-- #page -->
 
-<?php wp_footer(); ?>
+<?php wp_footer();?>
 
 </body>
 </html>

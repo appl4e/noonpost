@@ -7,102 +7,111 @@
  * @package NoonPost
  */
 
-if ( ! defined( 'NP_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( 'NP_VERSION', '1.0.0' );
+if (!defined('NP_VERSION')) {
+    // Replace the version number of the theme on each release.
+    define('NP_VERSION', '1.0.0');
 }
 
-if ( ! function_exists( 'noonpost_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	function noonpost_setup() {
-		/*
-		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on NoonPost, use a find and replace
-		 * to change 'noonpost' to the name of your theme in all the template files.
-		 */
-		load_theme_textdomain( 'noonpost', get_template_directory() . '/languages' );
+if (!function_exists('noonpost_setup')):
+    /**
+     * Sets up theme defaults and registers support for various WordPress features.
+     *
+     * Note that this function is hooked into the after_setup_theme hook, which
+     * runs before the init hook. The init hook is too late for some features, such
+     * as indicating support for post thumbnails.
+     */
+    function noonpost_setup()
+{
+        /*
+         * Make theme available for translation.
+         * Translations can be filed in the /languages/ directory.
+         * If you're building a theme based on NoonPost, use a find and replace
+         * to change 'noonpost' to the name of your theme in all the template files.
+         */
+        load_theme_textdomain('noonpost', get_template_directory() . '/languages');
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+        // Add default posts and comments RSS feed links to head.
+        add_theme_support('automatic-feed-links');
 
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+        /*
+         * Let WordPress manage the document title.
+         * By adding theme support, we declare that this theme does not use a
+         * hard-coded <title> tag in the document head, and expect WordPress to
+         * provide it for us.
+         */
+        add_theme_support('title-tag');
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
-		add_theme_support( 'post-thumbnails' );
+        /*
+         * Enable support for Post Thumbnails on posts and pages.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support('post-thumbnails');
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'noonpost' ),
-			)
-		);
+        // This theme uses wp_nav_menu() in one location.
+        register_nav_menus(
+            array(
+                'menu-1' => esc_html__('Primary', 'noonpost'),
+            )
+        );
 
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-				'style',
-				'script',
-			)
-		);
+        /*
+         * Switch default core markup for search form, comment form, and comments
+         * to output valid HTML5.
+         */
+        add_theme_support(
+            'html5',
+            array(
+                'search-form',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'caption',
+                'style',
+                'script',
+            )
+        );
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'noonpost_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
+        // Set up the WordPress core custom background feature.
+        add_theme_support(
+            'custom-background',
+            apply_filters(
+                'noonpost_custom_background_args',
+                array(
+                    'default-color' => 'ffffff',
+                    'default-image' => '',
+                )
+            )
+        );
 
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+        // Add theme support for selective refresh for widgets.
+        add_theme_support('customize-selective-refresh-widgets');
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
-	}
+        /**
+         * Add support for core custom logo.
+         *
+         * @link https://codex.wordpress.org/Theme_Logo
+         */
+        add_theme_support(
+            'custom-logo',
+            array(
+                'height'      => 250,
+                'width'       => 250,
+                'flex-width'  => true,
+                'flex-height' => true,
+            )
+        );
+
+        /**
+         * Add support for core post formates.
+         *
+         * @link https://wordpress.org/support/article/post-formats/
+         */
+
+        add_theme_support('post_formats', array('image', 'gallery', 'video'));
+    }
 endif;
-add_action( 'after_setup_theme', 'noonpost_setup' );
+add_action('after_setup_theme', 'noonpost_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,58 +120,107 @@ add_action( 'after_setup_theme', 'noonpost_setup' );
  *
  * @global int $content_width
  */
-function noonpost_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'noonpost_content_width', 640 );
+function noonpost_content_width()
+{
+    $GLOBALS['content_width'] = apply_filters('noonpost_content_width', 640);
 }
-add_action( 'after_setup_theme', 'noonpost_content_width', 0 );
+add_action('after_setup_theme', 'noonpost_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function noonpost_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'noonpost' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'noonpost' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+function noonpost_widgets_init()
+{
+    register_sidebar(
+        array(
+            'name'          => esc_html__('Sidebar', 'noonpost'),
+            'id'            => 'sidebar-1',
+            'description'   => esc_html__('Add widgets here.', 'noonpost'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__('Single Post Page Sidebar', 'noonpost'),
+            'id'            => 'sidebar-2',
+            'description'   => esc_html__('Add widgets here.', 'noonpost'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__('Footer Social', 'noonpost'),
+            'id'            => 'footer-social',
+            'description'   => sprintf(esc_html__('Add footer social icons here. Like:
+			%1$s
+				%2$s
+				<ul class="list-inline">
+				<li>
+				<a href="#">
+				<i class="fab fa-facebook-f"></i> Facebook
+				</a>
+				</li>
+				</ul>
+			%3$s
+			%4$s
+
+			Put html of ul with class "list-inline". Inside every li, Wrap font-awesome icon and name with anchor tag.', 'noonpost'), '<code>', '<pre>', '</pre>', '</code>'),
+            'before_widget' => '<div id="%1$s" class="social-icones %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '',
+            'after_title'   => '',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__('Copyright', 'noonpost'),
+            'id'            => 'copyright',
+            'description'   => esc_html__('Add copyright text here with a paragraph block only', 'noonpost'),
+            'before_widget' => '<div class="copyright">',
+            'after_widget'  => '</div>',
+            'before_title'  => '',
+            'after_title'   => '',
+        )
+    );
 }
-add_action( 'widgets_init', 'noonpost_widgets_init' );
+add_action('widgets_init', 'noonpost_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function noonpost_scripts() {
-	wp_enqueue_style( 'noonpost-style', get_stylesheet_uri(), array(), NP_VERSION );
-	wp_enqueue_style( 'noonpost-googlefonts','https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap', false);
-	wp_enqueue_style( 'noonpost-all', get_template_directory_uri() . '/assets/css/all.css', array(), NP_VERSION );
-	wp_enqueue_style( 'elegant-font-icons', get_template_directory_uri() . '/assets/css/elegant-font-icons.css', array(), NP_VERSION );
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), NP_VERSION );
-	wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css', array(), NP_VERSION );
-	wp_enqueue_style( 'main-style', get_template_directory_uri() . '/assets/css/style.css', array(), NP_VERSION );
-	wp_enqueue_style( 'custom', get_template_directory_uri() . '/assets/css/custom.css', array(), NP_VERSION );
-	wp_style_add_data( 'noonpost-style', 'rtl', 'replace' );
+function noonpost_scripts()
+{
+    wp_enqueue_style('noonpost-style', get_stylesheet_uri(), array(), NP_VERSION);
+    wp_enqueue_style('noonpost-googlefonts', 'https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap', false);
+    wp_enqueue_style('noonpost-all', get_template_directory_uri() . '/assets/css/all.css', array(), NP_VERSION);
+    wp_enqueue_style('elegant-font-icons', get_template_directory_uri() . '/assets/css/elegant-font-icons.css', array(), NP_VERSION);
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), NP_VERSION);
+    wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.css', array(), NP_VERSION);
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/style.css', array(), NP_VERSION);
+    wp_enqueue_style('custom', get_template_directory_uri() . '/assets/css/custom.css', array(), NP_VERSION);
+    wp_style_add_data('noonpost-style', 'rtl', 'replace');
 
-	wp_enqueue_script( 'noonpost-navigation', get_template_directory_uri() . '/js/navigation.js', array(), NP_VERSION, true );
-	wp_enqueue_script( 'popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), NP_VERSION, true );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), NP_VERSION, true );
-	wp_enqueue_script( 'ajax-contact', get_template_directory_uri() . '/assets/js/ajax-contact.js', array('jquery'), NP_VERSION, true );
-	wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), NP_VERSION, true );
-	wp_enqueue_script( 'switch', get_template_directory_uri() . '/assets/js/switch.js', array('jquery'), NP_VERSION, true );
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), NP_VERSION, true );
+    wp_enqueue_script('noonpost-navigation', get_template_directory_uri() . '/js/navigation.js', array(), NP_VERSION, true);
+    wp_enqueue_script('popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), NP_VERSION, true);
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), NP_VERSION, true);
+    wp_enqueue_script('ajax-contact', get_template_directory_uri() . '/assets/js/ajax-contact.js', array('jquery'), NP_VERSION, true);
+    wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), NP_VERSION, true);
+    wp_enqueue_script('switch', get_template_directory_uri() . '/assets/js/switch.js', array('jquery'), NP_VERSION, true);
+    wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), NP_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'noonpost_scripts' );
+add_action('wp_enqueue_scripts', 'noonpost_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -187,7 +245,6 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+if (defined('JETPACK__VERSION')) {
+    require get_template_directory() . '/inc/jetpack.php';
 }
-
