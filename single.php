@@ -9,32 +9,6 @@
 
 get_header();
 ?>
-
-<main id="primary" class="site-main">
-
-	<?php
-while (have_posts()):
-    the_post();
-
-    get_template_part('template-parts/content', get_post_type());
-
-    the_post_navigation(
-        array(
-            'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
-            'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
-        )
-    );
-
-    // If comments are open or we have at least one comment, load up the comment template.
-    if (comments_open() || get_comments_number()):
-        comments_template();
-    endif;
-
-endwhile; // End of the loop.
-?>
-
-</main><!-- #main -->
-
 <!--post-default-->
 <section class="section pt-55 ">
 	<div class="container-fluid">
@@ -44,52 +18,71 @@ endwhile; // End of the loop.
 				<?php
 				while (have_posts()):
 					the_post();
-					get_template_part('tempalte-parts/single-post');
+					get_template_part('template-parts/single-post');
+					// the_post_navigation(
+					// 	array(
+					// 			'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
+					// 			'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
+					// 	)
+					// );
 				?>
 
 				<!--next & previous-posts-->
+
 				<div class="row">
+					<?php
+						$prevPost= get_adjacent_post(true, '', true);
+						if(is_a($prevPost, 'WP_Post')):
+					?>
 					<div class="col-md-6">
 						<div class="widget">
 							<div class="widget-next-post">
 								<div class="small-post">
 									<div class="image">
-										<a href="post-default.html">
-											<img src="assets/img/latest/1.jpg" alt="...">
+										<a href="<?php echo get_permalink($prevPost->ID); ?>">
+											<!-- <img src="assets/img/latest/1.jpg" alt="..."> -->
+											<?php echo get_the_post_thumbnail($prevPost->ID); ?>
 										</a>
 									</div>
 									<div class="content">
 										<div>
-											<a class="link" href="post-default.html"><i class="arrow_left"></i>Preview post</a>
+											<a class="link" href="<?php echo get_permalink($prevPost->ID); ?>"><i class="arrow_left"></i>Preview post</a>
 										</div>
-										<a href="post-default.html">7 Healty Dinner Recipes for a Date Night at Home</a>
+										<a href="<?php echo get_permalink($prevPost->ID); ?>"><?php echo get_the_title($prevPost->ID); ?></a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<?php
+						endif;
+						$nextPost= get_adjacent_post(true, '', false);
+						if(is_a($nextPost, 'WP_Post')):	
+					?>
 					<div class="col-md-6">
 						<div class="widget">
 							<div class="widget-previous-post">
 								<div class="small-post">
 									<div class="image">
-										<a href="post-default.html">
-											<img src="assets/img/blog/2.jpg" alt="...">
+										<a href="<?php echo get_permalink($nextPost->ID); ?>">
+											<?php echo get_the_post_thumbnail($nextPost->ID); ?>
 										</a>
 									</div>
 									<div class="content">
 										<div>
-											<a class="link" href="post-default.html">
+											<a class="link" href="<?php echo get_permalink($nextPost->ID); ?>">
 												<span> Next post</span>
 												<span class="arrow_right"></span>
 											</a>
 										</div>
-										<a href="post-default.html">How to Choose Outfits for Work for woman and men</a>
+										<a href="<?php echo get_permalink($nextPost->ID); ?>"><?php echo get_the_title($nextPost->ID); ?></a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<?php
+						endif; ?>
 				</div>
 				<!--/-->
 
