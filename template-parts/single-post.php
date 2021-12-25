@@ -14,8 +14,15 @@
     <?php noonpost_post_thumbnail(); ?>
   </div>
   <div class="post-single-content">
-    <?php $categories = get_the_category(); ?>
-    <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="categorie"><?php echo $categories[0]->name; ?></a>
+    <?php $categories = get_the_category();
+      $the_category = count($categories)>0 ? $categories[0]-> name: '';
+      $the_category_link = count($categories)>0 ? get_category_link($categories[0]->term_id) : '';
+      if(count($categories)>0):
+    ?>
+    <a href="<?php echo esc_url($the_category_link); ?>" class="categorie"><?php echo $the_category; ?></a>
+    <?php
+      endif;
+    ?>
     <h4><?php the_title(); ?> </h4>
     <?php
             $author_id = get_the_author_meta('id');
@@ -59,35 +66,8 @@
         endif; ?>
       </ul>
     </div>
-    <div class="social-media">
-      <ul class="list-inline">
-        <li>
-          <a href="#" class="color-facebook">
-            <i class="fab fa-facebook"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="color-instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="color-twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="color-youtube">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="color-pinterest">
-            <i class="fab fa-pinterest"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <!-- social share links template -->
+    <?php get_template_part('template-parts/post-social-share'); ?>
   </div>
 </div>
 <!--/-->

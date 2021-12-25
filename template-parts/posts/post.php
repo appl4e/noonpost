@@ -18,8 +18,15 @@
       </a>
     </div>
     <div class="post-card-content">
-      <?php $categories = get_the_category(); ?>
-      <a href="<?php echo esc_url(get_category_link($categories[0]->term_id)); ?>" class="categorie"><?php echo $categories[0]->name; ?></a>
+      <?php $categories = get_the_category();
+        $the_category = count($categories)>0 ? $categories[0]-> name: '';
+        $the_category_link = count($categories)>0 ? get_category_link($categories[0]->term_id) : '';
+        if(count($categories)>0):
+      ?>
+      <a href="<?php echo esc_url($the_category_link); ?>" class="categorie"><?php echo $the_category; ?></a>
+      <?php
+        endif;
+      ?>
       <?php the_title('<h5><a href="'.esc_url(get_permalink()).'">', '</a></h5>'); ?>
       <!-- <h5><a href="post-default.html"></a> </h5> -->
       <p>
