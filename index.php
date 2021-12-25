@@ -16,12 +16,12 @@ get_header();
 ?>
 <!--mansory-layout-->
 <section class="masonry-layout col2-layout mt-120">
-		<div class="container-fluid">
-				<div class="row">
-						<div class="col-lg-8 mt--10 ">
-								<!--cards-->
-								<div class="card-columns">
-								<?php
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-8 mt--10 ">
+				<!--cards-->
+				<div class="card-columns">
+					<?php
 									if(have_posts()):
 										while(have_posts()):
 											the_post();
@@ -36,38 +36,46 @@ get_header();
 										get_template_part('template-parts/posts/post', 'none');
 									endif;
 								?>
-								</div>
-									<!--pagination-->
-									<div class="pagination mt-30">
-										<ul class="list-inline">
-												<li class="active">
-														<a href="#">1</a>
-												</li>
-												<li>
-														<a href="#">2</a>
-												</li>
-												<li>
-														<a href="#">3</a>
-												</li>
-												<li>
-														<a href="#">4</a>
-												</li>
-												<li>
-														<a href="#">
-																<i class="arrow_carrot-2right"></i>
-														</a>
-												</li>
-										</ul> 
-								</div><!--/-->
-						</div>
-						<div class="col-lg-4 max-width">
-							<?php
-							get_sidebar();
-							?>
-						</div>
 				</div>
+				<!--pagination-->
+				<div class="pagination mt-30">
+					<?php 
+					global $wp_query;
+					$big = 999999;
+
+					$pages = paginate_links( array(
+						'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						'format' => '?paged=%#%',
+						'current' => max( 1, get_query_var('paged') ),
+						'total' => $wp_query->max_num_pages,
+						'prev_text' => '<i class="arrow_carrot-2left"></i>',
+						'next_text' => '<i class="arrow_carrot-2right"></i>',
+						'type'  => 'array',
+					) );
+					if(is_array($pages)):
+						$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+					?>
+					<ul class="list-inline">
+						<?php foreach ($pages as $page): ?>
+						<li>
+							<?php echo $page; ?>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+					<?php endif; ?>
+				</div>
+
+				<!--/-->
+			</div>
+			<div class="col-lg-4 max-width">
+				<?php
+					get_sidebar();
+				?>
+			</div>
 		</div>
-</section><!--/-->
-		
+	</div>
+</section>
+<!--/-->
+
 <?php
 get_footer();

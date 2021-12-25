@@ -13,7 +13,7 @@
 <div class="card">
   <div class="post-card">
     <div class="post-card-image">
-      <a href="post-default.html">
+      <a href="<?php the_permalink(); ?>">
         <?php the_post_thumbnail(); ?>
       </a>
     </div>
@@ -31,20 +31,7 @@
       <!-- <h5><a href="post-default.html"></a> </h5> -->
       <p>
         <?php
-            the_content(
-              sprintf(
-                wp_kses(
-                  /* translators: %s: Name of current post. Only visible to screen readers */
-                  __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'noonpost' ),
-                  array(
-                    'span' => array(
-                      'class' => array(),
-                    ),
-                  )
-                ),
-                wp_kses_post( get_the_title() )
-              )
-            );
+            the_excerpt();
           ?>
       </p>
       <div class="post-card-info">
