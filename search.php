@@ -18,12 +18,15 @@ get_header();
 				<div class="card-columns">
 					<!--Post-1-->
 					<?php if ( have_posts() ) : ?>
-					<h5 class="mt-n60">
-						<?php
+					<div class="categorie-title">
+						<h3 class="mt-n60">
+							<?php
 							/* translators: %s: search query. */
 							printf( esc_html__( 'Search Results for: %s', 'noonpost' ), '<span>' . get_search_query() . '</span>' );
 						?>
-					</h5>
+						</h3>
+					</div>
+
 					<?php
 						/* Start the Loop */
 						while ( have_posts() ) :
