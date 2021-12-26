@@ -9,17 +9,17 @@
 
 ?>
 <!--Search-form-->
-<div class="search">
-		<div class="container-fluid">
-				<div class="search-width  text-center">
-						<button type="button" class="close">
-								<i class="icon_close"></i>
-						</button>
-						<form class="search-form">
-								<input type="search" value="" placeholder="<?php printf(esc_html__('What are you looking for?', 'noonpost')); ?>" name="s">
-								<button type="submit" class="search-btn"><?php printf(esc_html__('search', 'noonpost')); ?></button>
-						</form>
-				</div>
+<div class="search-popup">
+	<div class="container-fluid">
+		<div class="search-width  text-center">
+			<button type="button" class="close">
+				<i class="icon_close"></i>
+			</button>
+			<form class="search-form">
+				<input type="search" value="" placeholder="<?php printf(esc_html__('What are you looking for?', 'noonpost')); ?>" name="s">
+				<button type="submit" class="search-btn"><?php printf(esc_html__('search', 'noonpost')); ?></button>
+			</form>
 		</div>
+	</div>
 </div>
 <!--/-->
