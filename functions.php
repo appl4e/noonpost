@@ -95,9 +95,8 @@ if (!function_exists('noonpost_setup')):
         add_theme_support(
             'custom-logo',
             array(
-                'height'      => 250,
-                'width'       => 250,
-                'flex-width'  => true,
+                'height'      => 40,
+                'width'       => 134,
                 'flex-height' => true,
             )
         );

@@ -106,6 +106,50 @@ function noonpost_register_theme_options_metabox() {
 		'id'   => 'noonpost_options_general_title'
 	) );
 	$cmb_options->add_field( array(
+		'name' => esc_html__( 'White theme logo', 'noonpost' ),
+		'desc' => esc_html__( 'Upload the logo which should be shown when switched to white theme', 'noonpost' ),
+		'id'   => 'noonpost_white_logo',
+		'type' => 'file',
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+		),
+		'text'    => array(
+			'add_upload_file_text' => 'Choose Logo' // Change upload button text. Default: "Add or Upload File"
+		),
+		'query_args' => array(			
+			'type' => array(
+				'image/gif',
+				'image/jpeg',
+				'image/jpg',
+			 	'image/png',
+				'image/svg',
+			 ),
+		),
+		'preview_size' => 'full'
+	) );
+	$cmb_options->add_field( array(
+		'name' => esc_html__( 'Dark theme logo', 'noonpost' ),
+		'desc' => esc_html__( 'Upload the logo which should be shown when switched to dark theme', 'noonpost' ),
+		'id'   => 'noonpost_dark_logo',
+		'type' => 'file',
+		'options' => array(
+			'url' => false, // Hide the text input for the url
+		),
+		'text'    => array(
+			'add_upload_file_text' => 'Choose Logo' // Change upload button text. Default: "Add or Upload File"
+		),
+		'query_args' => array(			
+			'type' => array(
+				'image/gif',
+				'image/jpeg',
+				'image/jpg',
+			 	'image/png',
+				'image/svg',
+			 ),
+		),
+		'preview_size' => 'full'
+	) );
+	$cmb_options->add_field( array(
 		'name' => esc_html__( 'Copyright Text', 'noonpost' ),
 		'desc' => esc_html__( 'Copyright Text that you want to show in the footer bottom', 'noonpost' ),
 		'id'   => 'noonpost_copyright_text',

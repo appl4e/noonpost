@@ -943,6 +943,7 @@ input:checked + .slider:before {
 
 .navbar .logo img {
 	max-height: 40px;
+	width: auto;
 }
 
 .navbar .logo-white {

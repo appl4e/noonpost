@@ -39,22 +39,19 @@
 				<!--logo-->
 				<div class="logo">
 					<?php 
-					if(has_custom_logo()):
+					$darkLogo = cmb2_get_option('noonpost_theme_options','noonpost_dark_logo');
+					$whiteLogo = cmb2_get_option('noonpost_theme_options','noonpost_white_logo');
+					if($whiteLogo || $darkLogo):
 						?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<?php	the_custom_logo();?>
+						<img src="<?php echo	$darkLogo ? $darkLogo : ' ' ;?>" alt="" class="logo-white">
+						<img src="<?php echo	$whiteLogo ? $whiteLogo : ' ';?>" alt="" class="logo-dark">
 					</a>
 					<?php
 					else:
-						if ( is_front_page() && is_home() ) :
-							?>
+						?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php
-						else :
-							?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-						endif;
 					endif;
 					?>
 				</div>
