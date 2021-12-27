@@ -9,7 +9,6 @@
 
 get_header();
 ?>
-<h1>Test</h1>
 <section class="masonry-layout mt-100 col1-layout">
 	<div class="container-fluid">
 		<div class="row">
