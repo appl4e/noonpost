@@ -165,41 +165,6 @@ function noonpost_widgets_init()
             'after_title'   => '</h2>',
         )
     );
-    register_sidebar(
-        array(
-            'name'          => esc_html__('Footer Social', 'noonpost'),
-            'id'            => 'footer-social',
-            'description'   => sprintf(esc_html__('Add footer social icons here. Like:
-			%1$s
-				%2$s
-				<ul class="list-inline">
-				<li>
-				<a href="#">
-				<i class="fab fa-facebook-f"></i> Facebook
-				</a>
-				</li>
-				</ul>
-			%3$s
-			%4$s
-
-			Put html of ul with class "list-inline". Inside every li, Wrap font-awesome icon and name with anchor tag.', 'noonpost'), '<code>', '<pre>', '</pre>', '</code>'),
-            'before_widget' => '<div id="%1$s" class="social-icones %2$s">',
-            'after_widget'  => '</div>',
-            'before_title'  => '',
-            'after_title'   => '',
-        )
-    );
-    register_sidebar(
-        array(
-            'name'          => esc_html__('Copyright', 'noonpost'),
-            'id'            => 'copyright',
-            'description'   => esc_html__('Add copyright text here with a paragraph block only', 'noonpost'),
-            'before_widget' => '<div class="copyright">',
-            'after_widget'  => '</div>',
-            'before_title'  => '',
-            'after_title'   => '',
-        )
-    );
 }
 add_action('widgets_init', 'noonpost_widgets_init');
 
