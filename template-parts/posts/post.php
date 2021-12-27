@@ -38,15 +38,15 @@
         <ul class="list-inline">
           <li>
             <?php
-                    $author_id = get_the_author_meta('id');
+                    $author_id = get_the_author_meta('ID');
                     $avatar = get_avatar($author_id);
                   ?>
             <a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>">
               <?php
-                      if( $avatar !== false):
-                        echo $avatar; 
-                      endif;
-                    ?>
+                if( $avatar !== false):
+                  echo $avatar; 
+                endif;
+              ?>
             </a>
           </li>
           <li>

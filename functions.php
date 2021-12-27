@@ -146,6 +146,17 @@ function noonpost_widgets_init()
     );
     register_sidebar(
         array(
+            'name'          => esc_html__('Contact page sidebar', 'noonpost'),
+            'id'            => 'sidebar-3',
+            'description'   => esc_html__('Add widgets here.', 'noonpost'),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
             'name'          => esc_html__('Single Post Page Sidebar', 'noonpost'),
             'id'            => 'sidebar-2',
             'description'   => esc_html__('Add widgets here.', 'noonpost'),
@@ -253,3 +264,9 @@ if (defined('JETPACK__VERSION')) {
  * Require TGM plugin activation config file
  */
 require get_template_directory() . '/inc/plugins-dependency.php';
+
+/**
+ * Require Custom Meta box init file
+ */
+// Require CMB2 config
+require get_template_directory() . '/inc/cmb2-config.php';
