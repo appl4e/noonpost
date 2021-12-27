@@ -19,13 +19,13 @@
       $the_category_link = count($categories)>0 ? get_category_link($categories[0]->term_id) : '';
       if(count($categories)>0):
     ?>
-    <a href="<?php echo esc_url($the_category_link); ?>" class="categorie"><?php echo $the_category; ?></a>
+    <a href="<?php echo esc_url($the_category_link); ?>" class="categorie"><?php esc_html_e($the_category); ?></a>
     <?php
       endif;
     ?>
     <h4><?php the_title(); ?> </h4>
     <?php
-            $author_id = get_the_author_meta('id');
+            $author_id = get_the_author_meta('ID');
             $avatar = get_avatar($author_id);
         ?>
     <div class="post-single-info">

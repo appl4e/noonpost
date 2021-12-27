@@ -18,8 +18,6 @@
 </p>
 <div>
   <?php $categories = get_the_category();
-    $the_category = count($categories)>0 ? $categories[0]-> name: '';
-    $the_category_link = count($categories)>0 ? get_category_link($categories[0]->term_id) : '';
     if(count($categories)>0):
       foreach($categories as $category):
         ?>
