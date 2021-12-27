@@ -227,6 +227,11 @@ if (defined('JETPACK__VERSION')) {
 /**
  * Require TGM plugin activation config file
  */
+require get_template_directory() . '/inc/better-comments.php';
+
+/**
+ * Require TGM plugin activation config file
+ */
 require get_template_directory() . '/inc/plugins-dependency.php';
 
 /**

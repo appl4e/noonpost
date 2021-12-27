@@ -19,16 +19,9 @@ get_header();
 				while (have_posts()):
 					the_post();
 					get_template_part('template-parts/single-post');
-					// the_post_navigation(
-					// 	array(
-					// 			'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
-					// 			'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'noonpost') . '</span> <span class="nav-title">%title</span>',
-					// 	)
-					// );
 				?>
 
-				<!--next & previous-posts-->
-
+				<!-- Next previous post section -->
 				<div class="row">
 					<?php
 						$prevPost= get_previous_post();
