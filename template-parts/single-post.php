@@ -25,9 +25,9 @@
     ?>
     <h4><?php the_title(); ?> </h4>
     <?php
-            $author_id = get_the_author_meta('ID');
-            $avatar = get_avatar($author_id);
-        ?>
+      $author_id = get_the_author_meta('ID');
+      $avatar = get_avatar($author_id);
+    ?>
     <div class="post-single-info">
       <ul class="list-inline">
         <li><a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>">
@@ -55,7 +55,7 @@
     <div class="tags">
       <ul class="list-inline">
         <?php $postTags = get_the_tags();
-        if($postTags):
+          if($postTags):
           foreach($postTags as $tag):
           ?>
         <li>

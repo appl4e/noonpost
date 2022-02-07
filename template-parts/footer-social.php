@@ -13,9 +13,9 @@
 <div class="social-icones">
   <ul class="list-inline">
     <?php
-								$fbLink = cmb2_get_option('noonpost_theme_options', 'noonpost_facebook_link');
-								if($fbLink):
-							?>
+      $fbLink = cmb2_get_option('noonpost_theme_options', 'noonpost_facebook_link');
+      if($fbLink):
+    ?>
     <li>
       <a href="<?php echo esc_url($fbLink); ?>">
         <i class="fab fa-facebook-f"></i>Facebook</a>
